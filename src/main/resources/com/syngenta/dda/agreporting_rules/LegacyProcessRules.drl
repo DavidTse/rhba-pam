@@ -1,0 +1,15 @@
+package com.syngenta.dda.agreporting_rules;
+
+import com.syngenta.dda.facts.DeriveSeason;
+
+rule "Legacy Row 1 Set Season"
+	no-loop true
+	ruleflow-group "TestRuleflowGroup"
+	dialect "mvel"
+	when
+		ds : DeriveSeason( country == "IND" , month == "JULY" )
+	then
+	   		modify( ds ) {
+				setSeason( "Wet" )
+		}
+end

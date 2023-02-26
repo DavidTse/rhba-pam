@@ -1,0 +1,11 @@
+<kmodule xmlns="http://www.drools.org/xsd/kmodule" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <kbase name="SyngentaKieBase" default="true" eventProcessingMode="stream" equalsBehavior="identity">
+    <ksession name="SyngentaStatelessSession" type="stateless" default="true" clockType="realtime">
+      <listeners>
+        <agendaEventListener type="com.syngenta.sadie.agreporting.listener.SyngentaAgendaListener"/>
+        <processEventListener type="com.syngenta.sadie.agreporting.listener.SyngentaProcessListener"/>
+      </listeners>
+    </ksession>
+    <ksession name="SyngentaStatefulSession" type="stateful" default="false" clockType="realtime"/>
+  </kbase>
+</kmodule>

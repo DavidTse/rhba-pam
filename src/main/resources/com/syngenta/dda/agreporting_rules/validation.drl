@@ -1,0 +1,116 @@
+package com.syngenta.dda.agreporting_rules;
+
+
+import com.syngenta.dda.facts.DeriveSeason;
+import java.util.List;
+import java.util.ArrayList;
+
+rule "Mandatory country field is not present"
+	no-loop true
+	ruleflow-group "ValidationRuleflowGroup"
+	dialect "mvel"	
+	when
+		ds : DeriveSeason( country == null )
+	then		
+		ds.getErrorList().add("NULL-COUNTRY")		    		
+end
+
+
+rule "Mandatory country field is not valid"
+	no-loop true
+	ruleflow-group "ValidationRuleflowGroup"
+	dialect "mvel"
+	when
+		ds : DeriveSeason(		
+		       country != null,
+		       ! country.equalsIgnoreCase("INDIA"),
+		       ! country.equalsIgnoreCase("THAILAND"),
+		       ! country.equalsIgnoreCase("PHILLIPPINES"),
+		       ! country.equalsIgnoreCase("VIETNAM"),
+		       ! country.equalsIgnoreCase("UNITED STATES")
+		)
+	then
+	   ds.getErrorList().add("INVALID-COUNTRY:" + ds.getCountry())	,
+	   ds.setIsValid(false)	    
+end
+
+rule "Mandatory month field is not present"
+	no-loop true
+	ruleflow-group "ValidationRuleflowGroup"
+	dialect "mvel"
+	when
+		ds : DeriveSeason( month == null)
+	then
+	    ds.getErrorList().add("NULL-MONTH")	
+end
+
+rule "Mandatory month field is not valid"
+	no-loop true
+	ruleflow-group "ValidationRuleflowGroup"
+	dialect "mvel"
+	salience 95
+	when
+		ds : DeriveSeason(
+		       month != null,
+		       ! month.equalsIgnoreCase("JAN"),
+		       ! month.equalsIgnoreCase("FEB"),
+		       ! month.equalsIgnoreCase("MAR"),
+		       ! month.equalsIgnoreCase("APR"),
+		       ! month.equalsIgnoreCase("MAY"),
+		       ! month.equalsIgnoreCase("JUN"),
+		       ! month.equalsIgnoreCase("JUL"),
+		       ! month.equalsIgnoreCase("AUG"),
+		       ! month.equalsIgnoreCase("SEP"),
+		       ! month.equalsIgnoreCase("OCT"),
+		       ! month.equalsIgnoreCase("NOV"),
+		       ! month.equalsIgnoreCase("DEC")
+		)
+	then
+		 ds.getErrorList().add("INVALID-MONTH:" + ds.getMonth()),
+		 ds.setIsValid(false)
+end
+
+rule "Mandatory year field is not present"
+	no-loop true
+	ruleflow-group "ValidationRuleflowGroup"
+	dialect "mvel"
+	when
+		ds : DeriveSeason( harvestYear == null)
+	then
+	    ds.getErrorList().add("NULL-YEAR")		  
+end
+
+rule "Mandatory year field is not valid"
+	no-loop true
+	ruleflow-group "ValidationRuleflowGroup"
+	dialect "mvel"
+	when
+		ds : DeriveSeason(
+	       harvestYear !=null, 
+	       harvestYear < 1900 ||
+	       harvestYear > 2020
+	     )	   
+	then
+		 ds.getErrorList().add("INVALID-YEAR:" + ds.getHarvestYear()),
+		 ds.setIsValid(false)		   	    
+end
+
+rule "data to uppercase"
+	no-loop true
+	ruleflow-group "ValidationRuleflowGroup"
+	dialect "mvel"
+	when
+	    ds : DeriveSeason(
+	       $country: country !=null,
+	       $month: month !=null,
+	       errorList.size() == 0,
+	       $year: harvestYear !=null, harvestYear > 1900 , harvestYear < 2020
+	     )	   
+	then
+		modify(ds){
+		     setCountry($country.toUpperCase()),
+		     setMonth($month.toUpperCase()),
+		     setHarvestYear($year),
+		     setIsValid(true)
+		 }
+end

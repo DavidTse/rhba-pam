@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn2:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.omg.org/bpmn20" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:bpsim="http://www.bpsim.org/schemas/1.0" xmlns:color="http://www.omg.org/spec/BPMN/non-normative/color" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:drools="http://www.jboss.org/drools" id="_eUz_MP5TEeiSK8em6Xsr0Q" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd http://www.jboss.org/drools drools.xsd http://www.bpsim.org/schemas/1.0 bpsim.xsd" exporter="jBPM Designer" exporterVersion="1.0" expressionLanguage="http://www.mvel.org/2.0" targetNamespace="http://www.omg.org/bpmn20" typeLanguage="http://www.java.com/javaTypes">
+  <bpmn2:itemDefinition id="_deriveSeasonItem" structureRef="com.syngenta.dda.facts.DeriveSeason"/>
+  <bpmn2:itemDefinition id="__8BF44374-FDB2-4F95-B86C-13A2E4D28B04_dSInputXItem" structureRef="com.syngenta.dda.facts.DeriveSeason"/>
+  <bpmn2:itemDefinition id="__8BF44374-FDB2-4F95-B86C-13A2E4D28B04_dSOutputXItem" structureRef="com.syngenta.dda.facts.DeriveSeason"/>
+  <bpmn2:process id="com.syngenta.dda.agreporting_rules.GetSeasonLegacy" drools:packageName="com.syngenta.dda.agreporting_rules" drools:version="1.0" name="GetSeasonLegacy" isExecutable="true">
+    <bpmn2:extensionElements>
+      <drools:import name="com.syngenta.dda.facts.DeriveSeason"/>
+    </bpmn2:extensionElements>
+    <bpmn2:property id="deriveSeason" itemSubjectRef="_deriveSeasonItem"/>
+    <bpmn2:startEvent id="processStartEvent" drools:selectable="true" color:background-color="#9acd32" color:border-color="#000000" color:color="#000000" name="">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:outgoing>_E24693BA-3C10-404C-912D-C0BCD911432D</bpmn2:outgoing>
+    </bpmn2:startEvent>
+    <bpmn2:businessRuleTask id="_8BF44374-FDB2-4F95-B86C-13A2E4D28B04" drools:selectable="true" drools:ruleFlowGroup="TestRuleflowGroup" drools:scriptFormat="http://www.java.com/java" color:background-color="#fafad2" color:border-color="#000000" color:color="#000000" name="" implementation="http://www.jboss.org/drools/rule">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[]]></drools:metaValue>
+        </drools:metaData>
+        <drools:onEntry-script scriptFormat="http://www.java.com/java">
+          <drools:script><![CDATA[System.out.println("Entering GetSeason rules in legacy process " + deriveSeason );
+]]></drools:script>
+        </drools:onEntry-script>
+        <drools:onExit-script scriptFormat="http://www.java.com/java">
+          <drools:script><![CDATA[System.out.println("Exiting GetSeason rules in legacy process " + deriveSeason );
+]]></drools:script>
+        </drools:onExit-script>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>_E24693BA-3C10-404C-912D-C0BCD911432D</bpmn2:incoming>
+      <bpmn2:outgoing>_1A488131-0699-41D8-ABF3-F6ADE5AF55E6</bpmn2:outgoing>
+      <bpmn2:ioSpecification id="_eUz_Mf5TEeiSK8em6Xsr0Q">
+        <bpmn2:dataInput id="_8BF44374-FDB2-4F95-B86C-13A2E4D28B04_dSInputX" drools:dtype="com.syngenta.dda.facts.DeriveSeason" itemSubjectRef="__8BF44374-FDB2-4F95-B86C-13A2E4D28B04_dSInputXItem" name="dS"/>
+        <bpmn2:dataOutput id="_8BF44374-FDB2-4F95-B86C-13A2E4D28B04_dSOutputX" drools:dtype="com.syngenta.dda.facts.DeriveSeason" itemSubjectRef="__8BF44374-FDB2-4F95-B86C-13A2E4D28B04_dSOutputXItem" name="dS"/>
+        <bpmn2:inputSet id="_eUz_Mv5TEeiSK8em6Xsr0Q">
+          <bpmn2:dataInputRefs>_8BF44374-FDB2-4F95-B86C-13A2E4D28B04_dSInputX</bpmn2:dataInputRefs>
+        </bpmn2:inputSet>
+        <bpmn2:outputSet id="_eUz_M_5TEeiSK8em6Xsr0Q">
+          <bpmn2:dataOutputRefs>_8BF44374-FDB2-4F95-B86C-13A2E4D28B04_dSOutputX</bpmn2:dataOutputRefs>
+        </bpmn2:outputSet>
+      </bpmn2:ioSpecification>
+      <bpmn2:dataInputAssociation id="_eUz_NP5TEeiSK8em6Xsr0Q">
+        <bpmn2:sourceRef>deriveSeason</bpmn2:sourceRef>
+        <bpmn2:targetRef>_8BF44374-FDB2-4F95-B86C-13A2E4D28B04_dSInputX</bpmn2:targetRef>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataOutputAssociation id="_eUz_Nf5TEeiSK8em6Xsr0Q">
+        <bpmn2:sourceRef>_8BF44374-FDB2-4F95-B86C-13A2E4D28B04_dSOutputX</bpmn2:sourceRef>
+        <bpmn2:targetRef>deriveSeason</bpmn2:targetRef>
+      </bpmn2:dataOutputAssociation>
+    </bpmn2:businessRuleTask>
+    <bpmn2:sequenceFlow id="_E24693BA-3C10-404C-912D-C0BCD911432D" drools:selectable="true" color:background-color="#000000" color:border-color="#000000" color:color="#000000" sourceRef="processStartEvent" targetRef="_8BF44374-FDB2-4F95-B86C-13A2E4D28B04"/>
+    <bpmn2:endEvent id="_5BBA5C97-AD84-47BB-A18D-4332EC311F78" drools:selectable="true" color:background-color="#ff6347" color:border-color="#000000" color:color="#000000" name="">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>_1A488131-0699-41D8-ABF3-F6ADE5AF55E6</bpmn2:incoming>
+    </bpmn2:endEvent>
+    <bpmn2:sequenceFlow id="_1A488131-0699-41D8-ABF3-F6ADE5AF55E6" drools:selectable="true" color:background-color="#000000" color:border-color="#000000" color:color="#000000" sourceRef="_8BF44374-FDB2-4F95-B86C-13A2E4D28B04" targetRef="_5BBA5C97-AD84-47BB-A18D-4332EC311F78"/>
+  </bpmn2:process>
+  <bpmndi:BPMNDiagram id="_eUz_Nv5TEeiSK8em6Xsr0Q">
+    <bpmndi:BPMNPlane id="_eUz_N_5TEeiSK8em6Xsr0Q" bpmnElement="com.syngenta.dda.agreporting_rules.GetSeasonLegacy">
+      <bpmndi:BPMNShape id="_eUz_OP5TEeiSK8em6Xsr0Q" bpmnElement="processStartEvent">
+        <dc:Bounds height="30.0" width="30.0" x="120.0" y="165.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="_eUz_Of5TEeiSK8em6Xsr0Q" bpmnElement="_8BF44374-FDB2-4F95-B86C-13A2E4D28B04">
+        <dc:Bounds height="80.0" width="100.0" x="195.0" y="135.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="_eUz_Ov5TEeiSK8em6Xsr0Q" bpmnElement="_5BBA5C97-AD84-47BB-A18D-4332EC311F78">
+        <dc:Bounds height="28.0" width="28.0" x="340.0" y="166.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="_eUz_O_5TEeiSK8em6Xsr0Q" bpmnElement="_E24693BA-3C10-404C-912D-C0BCD911432D" sourceElement="_eUz_OP5TEeiSK8em6Xsr0Q" targetElement="_eUz_Of5TEeiSK8em6Xsr0Q">
+        <di:waypoint xsi:type="dc:Point" x="135.0" y="180.0"/>
+        <di:waypoint xsi:type="dc:Point" x="245.0" y="175.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="_eUz_PP5TEeiSK8em6Xsr0Q" bpmnElement="_1A488131-0699-41D8-ABF3-F6ADE5AF55E6" sourceElement="_eUz_Of5TEeiSK8em6Xsr0Q" targetElement="_eUz_Ov5TEeiSK8em6Xsr0Q">
+        <di:waypoint xsi:type="dc:Point" x="245.0" y="175.0"/>
+        <di:waypoint xsi:type="dc:Point" x="354.0" y="180.0"/>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+  <bpmn2:relationship id="_eUz_Pf5TEeiSK8em6Xsr0Q" type="BPSimData">
+    <bpmn2:extensionElements>
+      <bpsim:BPSimData>
+        <bpsim:Scenario xsi:type="bpsim:Scenario" id="default" name="Simulationscenario">
+          <bpsim:ScenarioParameters xsi:type="bpsim:ScenarioParameters" baseTimeUnit="min"/>
+          <bpsim:ElementParameters xsi:type="bpsim:ElementParameters" elementRef="_8BF44374-FDB2-4F95-B86C-13A2E4D28B04" id="_eUz_Pv5TEeiSK8em6Xsr0Q">
+            <bpsim:TimeParameters xsi:type="bpsim:TimeParameters">
+              <bpsim:ProcessingTime xsi:type="bpsim:Parameter">
+                <bpsim:UniformDistribution max="10.0" min="5.0"/>
+              </bpsim:ProcessingTime>
+            </bpsim:TimeParameters>
+            <bpsim:CostParameters xsi:type="bpsim:CostParameters">
+              <bpsim:UnitCost xsi:type="bpsim:Parameter">
+                <bpsim:FloatingParameter value="0.0"/>
+              </bpsim:UnitCost>
+            </bpsim:CostParameters>
+          </bpsim:ElementParameters>
+          <bpsim:ElementParameters xsi:type="bpsim:ElementParameters" elementRef="_5BBA5C97-AD84-47BB-A18D-4332EC311F78" id="_eUz_P_5TEeiSK8em6Xsr0Q">
+            <bpsim:TimeParameters xsi:type="bpsim:TimeParameters">
+              <bpsim:ProcessingTime xsi:type="bpsim:Parameter">
+                <bpsim:UniformDistribution max="10.0" min="5.0"/>
+              </bpsim:ProcessingTime>
+            </bpsim:TimeParameters>
+          </bpsim:ElementParameters>
+          <bpsim:ElementParameters xsi:type="bpsim:ElementParameters" elementRef="_E24693BA-3C10-404C-912D-C0BCD911432D" id="_eUz_QP5TEeiSK8em6Xsr0Q">
+            <bpsim:ControlParameters xsi:type="bpsim:ControlParameters">
+              <bpsim:Probability xsi:type="bpsim:Parameter">
+                <bpsim:FloatingParameter value="100.0"/>
+              </bpsim:Probability>
+            </bpsim:ControlParameters>
+          </bpsim:ElementParameters>
+          <bpsim:ElementParameters xsi:type="bpsim:ElementParameters" elementRef="processStartEvent" id="_eUz_Qf5TEeiSK8em6Xsr0Q">
+            <bpsim:TimeParameters xsi:type="bpsim:TimeParameters">
+              <bpsim:ProcessingTime xsi:type="bpsim:Parameter">
+                <bpsim:UniformDistribution max="10.0" min="5.0"/>
+              </bpsim:ProcessingTime>
+            </bpsim:TimeParameters>
+            <bpsim:ControlParameters xsi:type="bpsim:ControlParameters">
+              <bpsim:Probability xsi:type="bpsim:Parameter">
+                <bpsim:FloatingParameter value="100.0"/>
+              </bpsim:Probability>
+            </bpsim:ControlParameters>
+          </bpsim:ElementParameters>
+          <bpsim:ElementParameters xsi:type="bpsim:ElementParameters" elementRef="_1A488131-0699-41D8-ABF3-F6ADE5AF55E6" id="_eUz_Qv5TEeiSK8em6Xsr0Q">
+            <bpsim:ControlParameters xsi:type="bpsim:ControlParameters">
+              <bpsim:Probability xsi:type="bpsim:Parameter">
+                <bpsim:FloatingParameter value="100.0"/>
+              </bpsim:Probability>
+            </bpsim:ControlParameters>
+          </bpsim:ElementParameters>
+        </bpsim:Scenario>
+      </bpsim:BPSimData>
+    </bpmn2:extensionElements>
+    <bpmn2:source>_eUz_MP5TEeiSK8em6Xsr0Q</bpmn2:source>
+    <bpmn2:target>_eUz_MP5TEeiSK8em6Xsr0Q</bpmn2:target>
+  </bpmn2:relationship>
+</bpmn2:definitions>
